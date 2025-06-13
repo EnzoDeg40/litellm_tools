@@ -14,7 +14,7 @@ The scripts demonstrate how to define and use tools (functions) with LLMs via li
 - **03_multiple_tool_calls.py**: Combines multiple math tools and demonstrates how to handle multiple tool calls in a single LLM response. It prints both the raw LLM response and the results of executing each function.
 - **04_trip_planner_tool.py**: Demonstrates planning a trip between two cities with a departure date using a tool schema. The script parses the LLM's tool call and prints the planned trip.
 - **05_interactive_list_manager.py**: Interactive script to manage a list of first names (add, remove, list) using LLM tool calls and corresponding Python functions.
-
+- **06_web_streaming.py**: A web application that allows users to interact with the LLM via a web interface, demonstrating real-time streaming. It can be run with `uvicorn main:app --reload --port 8000` and accessed at `http://localhost:8000`. You can also use curl: `curl -N -X POST http://localhost:8000/chat -H "Content-Type: application/json" -d '{"prompt": "raconte une news tres courte"}'`
 
 ## Requirements
 

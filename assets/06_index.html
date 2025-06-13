@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Streaming avec Ollama</title>
+</head>
+
+<body>
+    <h1>Chat avec Ollama (Streaming)</h1>
+    <textarea id="prompt" rows="4" cols="50" placeholder="Écris ton message ici..."></textarea><br>
+    <button onclick="sendPrompt()">Envoyer</button>
+    <pre id="response"></pre>
+
+    <script>
+        async function sendPrompt() {
+            const prompt = document.getElementById("prompt").value;
+            const responseBox = document.getElementById("response");
+            responseBox.textContent = ""; // reset
+            const res = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt })
+            });
+
+            const reader = res.body.getReader();
+            const decoder = new TextDecoder();
+            let result = "";
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                const chunk = decoder.decode(value, { stream: true });
+                result += chunk;
+                responseBox.textContent = result;
+            }
+        }
+    </script>
+</body>
+
+</html>
