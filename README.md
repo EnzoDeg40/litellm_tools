@@ -16,6 +16,7 @@ The scripts demonstrate how to define and use tools (functions) with LLMs via li
 - **05_interactive_list_manager.py**: Interactive script to manage a list of first names (add, remove, list) using LLM tool calls and corresponding Python functions.
 - **06_web_streaming.py**: A web application that allows users to interact with the LLM via a web interface, demonstrating real-time streaming. It can be run with `uvicorn main:app --reload --port 8000` and accessed at `http://localhost:8000`. You can also use curl: `curl -N -X POST http://localhost:8000/chat -H "Content-Type: application/json" -d '{"prompt": "raconte une news tres courte"}'`
 - **07_suggestions.py**: An interactive script that suggests travel ideas based on user input. It uses a tool to generate suggestions based on the context of the conversation between the user and the assistant.
+- **08_multiple_tool_calls_hack.py**: Enable multiple tool calls for models that do not natively support this feature. This approach may result in significantly higher token usage and associated costs.
 
 ## Requirements
 
