@@ -71,6 +71,8 @@ done_called = False
 nb_tool_calls = 0
 
 while not done_called and nb_tool_calls < MAX_TOOL_CALLS:
+    messages = [msg for msg in messages if not (msg["role"] == "system" and msg["content"].startswith("Outils déjà appelés :"))]
+
     if called_tools:
         history = "\n".join([
             f"{tool['name']}({tool['arguments']})" for tool in called_tools
